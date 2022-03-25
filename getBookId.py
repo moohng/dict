@@ -1,24 +1,26 @@
 #!/usr/bin/python3
-# -*- coding: UTF-8 -*- 
+# -*- coding: UTF-8 -*-
 
 # SETP1 : 获得所有书本id
 
 import requests
 import json
 
-#http://reciteword.youdao.com/reciteword/v1/param?key=normalBooks&screen=720x1280&imei=CQlhZDQ5NDllNmU0M2Y2ZTUxCWQ2NmRlNGIxN2Q1Mw%253D%253D&mid=6.0.1&keyfrom=reciteword.1.5.3.android&vendor=index&version=1.5.3&model=Redmi_4A
-#http://reciteword.youdao.com/reciteword/v1/param?key=normalBooks
+print(123, 345, sep='/')
 
-url = "http://reciteword.youdao.com/reciteword/v1/param?key=normalBooks";
-res = requests.get(url);
+# http://reciteword.youdao.com/reciteword/v1/param?key=normalBooks&screen=720x1280&imei=CQlhZDQ5NDllNmU0M2Y2ZTUxCWQ2NmRlNGIxN2Q1Mw%253D%253D&mid=6.0.1&keyfrom=reciteword.1.5.3.android&vendor=index&version=1.5.3&model=Redmi_4A
+# http://reciteword.youdao.com/reciteword/v1/param?key=normalBooks
+
+url = "http://reciteword.youdao.com/reciteword/v1/param?key=normalBooks"
+res = requests.get(url)
 res.encoding = 'utf-8'
 data = res.text
 jsonObj = json.loads(data)
-bookLists = jsonObj['data']['normalBooks']['bookList'];
-bookids = [];
+bookLists = jsonObj['data']['normalBooks']['bookList']
+bookids = []
 for i in bookLists:
-	bookids.append( i['id'] )
-print( bookids )
+    bookids.append(i['id'])
+print(bookids)
 
 """
 http://reciteword.youdao.com/reciteword/v1/getBooksInfo?screen=720x1280&imei=CQlhZDQ5NDllNmU0M2Y2ZTUxCWQ2NmRlNGIxN2Q1Mw%253D%253D&mid=6.0.1&keyfrom=reciteword.1.5.3.android&vendor=index&version=1.5.3&model=Redmi_4A
